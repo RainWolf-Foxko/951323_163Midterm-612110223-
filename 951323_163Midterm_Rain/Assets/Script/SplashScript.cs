@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SplashScript : MonoBehaviour
 {
+    private AudioSource sound;
     private float waitTime;
     public float startWaitTime = 10;
 
@@ -17,12 +18,17 @@ public class SplashScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+         sound  = GetComponent<AudioSource>();
         waitTime = startWaitTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(GameInstance.Instance._isMusicEnabled == false)
+        {
+            sound.enabled = !sound.enabled;
+        }
         _timer.text = "Timer : " + waitTime.ToString();
         _scoretext.text = "Score : " + GameInstance.Instance.score.ToString();
         _NumOfWin.text = "Number Of Win : " + GameInstance.Instance.NumOfWin.ToString();

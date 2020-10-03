@@ -23,8 +23,8 @@ public class GameInstance : MonoBehaviour
     public int NumOfLose = 0;
     public int NumOfWin = 0;
     public bool IsOptionMenuActive{get;set;}
-    public bool _isMusicEnabled{get;set;}
-    public bool SFXEnabled{get;set;}
+    public bool _isMusicEnabled = true;
+    public bool SFXEnabled = true;
 
     void Awake()
     {

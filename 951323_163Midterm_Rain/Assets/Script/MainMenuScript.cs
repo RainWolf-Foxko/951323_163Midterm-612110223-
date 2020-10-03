@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
+    private AudioSource sound;
     private float waitTime;
     public float startWaitTime = 5;
     private Vector3 prevMousePosition = Vector3.zero;
@@ -22,11 +23,17 @@ public class MainMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sound  = GetComponent<AudioSource>();
         waitTime = startWaitTime;
     }
     // Update is called once per frame
     void Update()
     {
+
+        if(GameInstance.Instance._isMusicEnabled == false)
+        {
+            sound.enabled = !sound.enabled;
+        }
         _scoretext.text = "Score : " + GameInstance.Instance.score.ToString();
         _NumOfWin.text = "Number Of Win : " + GameInstance.Instance.NumOfWin.ToString();
         _NumOfLose.text = "Number Of Lose : " + GameInstance.Instance.NumOfLose.ToString();
