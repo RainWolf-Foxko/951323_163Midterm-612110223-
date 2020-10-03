@@ -10,6 +10,9 @@ public class SplashScript : MonoBehaviour
     public float startWaitTime = 10;
 
     [SerializeField] Text _timer;
+    [SerializeField] Text _scoretext;
+    [SerializeField] Text _NumOfWin;
+    [SerializeField] Text _NumOfLose;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,9 @@ public class SplashScript : MonoBehaviour
     void Update()
     {
         _timer.text = "Timer : " + waitTime.ToString();
+        _scoretext.text = "Score : " + GameInstance.Instance.score.ToString();
+        _NumOfWin.text = "Number Of Win : " + GameInstance.Instance.NumOfWin.ToString();
+        _NumOfLose.text = "Number Of Lose : " + GameInstance.Instance.NumOfLose.ToString();
 
         if (Input.anyKeyDown)
         {

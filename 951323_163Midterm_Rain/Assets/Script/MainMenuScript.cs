@@ -11,6 +11,10 @@ public class MainMenuScript : MonoBehaviour
     private Vector3 prevMousePosition = Vector3.zero;
 
     [SerializeField] Text _timer;
+    [SerializeField] Text _scoretext;
+    [SerializeField] Text _NumOfWin;
+    [SerializeField] Text _NumOfLose;
+
     [SerializeField] Button _StageBtn;
     [SerializeField] Button _OptionBtn;
     [SerializeField] Button _CreditBtn;
@@ -23,6 +27,9 @@ public class MainMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _scoretext.text = "Score : " + GameInstance.Instance.score.ToString();
+        _NumOfWin.text = "Number Of Win : " + GameInstance.Instance.NumOfWin.ToString();
+        _NumOfLose.text = "Number Of Lose : " + GameInstance.Instance.NumOfLose.ToString();
         _timer.text = "Timer : " + waitTime.ToString();
 
         if(Input.anyKeyDown || Input.mousePosition != prevMousePosition) waitTime = startWaitTime;

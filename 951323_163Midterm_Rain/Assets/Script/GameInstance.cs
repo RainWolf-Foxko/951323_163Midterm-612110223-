@@ -19,9 +19,9 @@ public class GameInstance : MonoBehaviour
     }
     static protected GameInstance _singletonInstance = null;
     //private string name;
-    private int score{get;set;}
-    private int NumOfLose{get;set;}
-    private int NumOfWin{get;set;}
+    public int score = 0;
+    public int NumOfLose = 0;
+    public int NumOfWin = 0;
     public bool IsOptionMenuActive{get;set;}
     public bool _isMusicEnabled{get;set;}
     public bool SFXEnabled{get;set;}
