@@ -19,7 +19,10 @@ public class CollisionLose : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Player")
+        {
             GameInstance.Instance.NumOfLose++;
             SceneManager.LoadScene("MainMenu");
+        }
     }
 }

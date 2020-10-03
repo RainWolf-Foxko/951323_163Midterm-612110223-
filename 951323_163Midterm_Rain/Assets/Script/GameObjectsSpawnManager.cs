@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameObjectsSpawnManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject _itemToBeSpawn;
+    GameObject[] _itemToBeSpawn;
 
     [SerializeField]
     GameObject[] _obstaclesToBeSpawn;
 
     // Start is called before the first frame update
     void Start()
-    {
-        Invoke("SpawnItem", 2.0f);
+    {   
         Invoke("SpawnObstacle", 2.0f);
+        Invoke("SpawnItem", 2.0f);
     }
 
     // Update is called once per frame
@@ -23,27 +23,23 @@ public class GameObjectsSpawnManager : MonoBehaviour
     {
         
     }
-
-
-    void SpawnItem()
+    void SpawnObstacle()
     {
-        GameObject go = Instantiate(_itemToBeSpawn ,
-            new Vector3(Random.Range(-6f, 6f), 5, Random.Range(-6f, 6f)),
-            Quaternion.identity);
-        Destroy(go, 5);
-
-        float nextSpawnTime = Random.Range(0.2f, 1);
-        Invoke("SpawnItem", nextSpawnTime);
-    }
-
-    void SpawnObstacle(){
-        int obsIdx = Random.Range(0, _obstaclesToBeSpawn.Length);
-        GameObject go = Instantiate(_obstaclesToBeSpawn[obsIdx],
-            new Vector3(Random.Range(-6f, 6f), 5, Random.Range(-6f, 6f)), Quaternion.identity);
-        Destroy(go, 5);
-
+         int ObsIdx = Random.Range(0, _obstaclesToBeSpawn.Length);
+        GameObject go = Instantiate(_obstaclesToBeSpawn[ObsIdx],
+            new Vector3(Random.Range(-2f, 2f), 10, Random.Range(0, 40f)), Quaternion.identity);
+        Destroy(go, 10);
 
         float nextSpawnTime = Random.Range(0.2f, 1);
         Invoke("SpawnObstacle", nextSpawnTime);
+    }
+    void SpawnItem(){
+        int ItemIdx = Random.Range(0, _itemToBeSpawn.Length);
+        GameObject go = Instantiate(_itemToBeSpawn[ItemIdx],
+            new Vector3(Random.Range(-2f, 2f), 10, Random.Range(0, 40f)), Quaternion.identity);
+        Destroy(go, 10);
+
+        float nextSpawnTime = Random.Range(0.2f, 1);
+        Invoke("SpawnItem", nextSpawnTime);
     }
 }

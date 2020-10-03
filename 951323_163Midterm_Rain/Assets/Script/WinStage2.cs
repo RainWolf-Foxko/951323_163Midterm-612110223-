@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class WinStage2 : MonoBehaviour
 {
+    [SerializeField] Stage2Script _stage2S;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class WinStage2 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        GameInstance.Instance.score = (int)_stage2S.waitTime * 1000;
             GameInstance.Instance.NumOfWin++;
             SceneManager.LoadScene("MainMenu");
     }

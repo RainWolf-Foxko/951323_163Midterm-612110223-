@@ -10,10 +10,11 @@ public class Stage1Script : MonoBehaviour
     [SerializeField] Text _scoretext;
     [SerializeField] Text _NumOfWin;
     [SerializeField] Text _NumOfLose;
+    [SerializeField] Button _BackBtn;
 
     public float waitTime;
     public float startWaitTime = 30;
-     [SerializeField] Button _BackBtn;
+
     // Start is called before the first frame update
     void Start()
     {
